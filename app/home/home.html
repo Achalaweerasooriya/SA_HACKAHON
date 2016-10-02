@@ -1,0 +1,653 @@
+
+ <div ng-controller="homeCtrl"   ng-init="showPromptCity($event)">
+  <div >
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html#!/" style="color:#ffffff"><md-icon md-svg-src="./logo_animated.svg"                   style="width:2.500em;height:2.000em;" aria-label="Cart" ></md-icon>ApeKade</a>
+            </div>
+            <!-- Top Menu Items -->
+
+            <ul  ng-if="userLogedIn == true" class="nav navbar-right top-nav">
+           
+
+                <li class="dropdown">
+                    <a href="#!/" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Products!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#!/">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                    <div ng-if="userDetails.name = undifined"></div>
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#!/">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#!/">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#!/" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#!/">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#!/home">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a  class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-user"></i> {{user.name}}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Setting </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse" >
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="">  <i class="fa fa-list-alt" ></i> LIST OF ITMES</a>
+                    </li>
+                   <!-- <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#!/home">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>  
+ ng-true-value="'yup'" ng-false-value="'nope'"
+                    -->
+                    <!--repeat       <!--one repeat {{ item.productName }}ng-repeat="item in userList" -->      
+                     <li ng-repeat="(key,value) in userList | groupBy: 'productCatergory'">
+                    <a href="javascript:;" data-toggle="collapse" ng-click="filterSearch(key)" data-target="#demo{{$index}}">   
+ <md-checkbox class="green" ng-click="filterSearch(key)" ng-model="userListCatergoryChecked.selected[key]" ng-checked="false" style="margin-bottom: 1px;" ></md-checkbox>
+ 
+                         {{key}}<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo{{$index}}" class="collapse">
+                            <li ng-repeat="item in value">
+                                <div ng-init="check(item.statusAddedToCart,[key]);"></div>
+                                <a href="#!/" ng-click="filterSearch(item.productName)">{{item.productName}} <span ng-if="item.statusAddedToCart== 'true'" style="    color: green;">   <i class="fa fa-check" aria-hidden="true"></i></span></a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <!--repeat-->
+                    
+<!--should remove-
+  <div ui-tree>
+  <ol ui-tree-nodes="" ng-model="list">
+    <li ng-repeat="(key,value) in userList | groupBy: 'productCatergory'" ui-tree-node>
+      <div ui-tree-handle>
+        {{key}}
+      </div>
+      <ol ui-tree-nodes="" ng-model="item.items">
+        <li ng-repeat="item in value" ui-tree-node>
+          <div ui-tree-handle>
+           {{item.productName}} 
+          </div>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</div>
+<!--should remove-->
+                 <!--     <li>
+
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo2">
+                    <md-checkbox class="green" ng-model="data.cb" style="margin-bottom: 1px;"></md-checkbox>
+Rice <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                <a href="#!/home">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                </ul>
+
+ 
+
+                                    <ul  ng-if="userLogedIn != true" class="nav navbar-right top-nav">
+           
+<li><md-button class="md-raised" ng-click="goToLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</md-button></li>
+<li><md-button class="md-raised" ng-click="goToRegister()"><i class="fa fa-user" aria-hidden="true"></i> SIGN-UP</md-button></li>
+                                                           
+                                                            
+                                                        </ul>
+
+                                                  
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
+<!--<div ng-include src="'./navbar/navbar.html'"></div>
+         Navigation -->
+       
+        <div id="page-wrapper" style="min-width:100%;">
+
+
+            <div class="container-fluid" style= "margin-right:1px;">
+
+                <!-- Page Heading -->
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <h1 class="page-header">ApeKade
+                        </h1>
+                    <span ng-if="userLogedIn == true">
+                        <ol class="breadcrumb" style="width:70%;float: left;width: 61%;">
+                            <li class="active" style="width:80%;height: 1.875em;">
+                                <md-input-container class="md-block" style="margin: 11px 0;"> <label style="color:white;font-size:large;font-weight: 100;" ><i class="fa fa-search" aria-hidden="true" style="color:white;"></i> Search</label> <input type="text" ng-model="search" style="color:white;font-size:large;" /> </md-input-container>
+                            </li>
+                         
+
+                        </ol>
+
+                        <!--checkout--> 
+                            <div class="panel panel-yellow"  style="width:20%;float: right;margin-left: 100px;margin-right: inherit;">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-3x"></i>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div ng-click="checkout();">
+                                <div class="panel-footer" >
+                                    <span class="pull-left">Checkout</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--checkout-->
+                    </span>
+                    <span ng-if="userLogedIn != true">
+                        <ol class="breadcrumb" style="width:100%;float: left;width: 100%;">
+                            <li class="active" style="width:100%;height: 1.875em;">
+                                <md-input-container class="md-block" style="margin: 11px 0;"> <label style="color:white;font-size:large;font-weight: 100;" ><i class="fa fa-search" aria-hidden="true" style="color:white;"></i> Search</label> <input type="text" ng-model="search" style="color:white;font-size:large;" /> </md-input-container>
+                            </li>
+                         
+
+                        </ol>
+
+                        
+                    </span>
+                          <md-icon md-svg-src="./logo_animated.svg"    style="width: 15.500em; height: 11.000em; /* float: left; */ position: absolute; top: 32px; left: 2px;" aria-label="Cart"    ></md-icon>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row" >
+                    <div class="col-lg-12"   style="float:left;">
+                        <div class="alert alert-info alert-dismissable"  style="width:100%;float:left;">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
+                        </div>
+                    </div>
+                </div>
+                        
+
+                         
+                <br/><br/>
+                <!-- /.row -->
+
+               
+                    <!--  <div class="row"> <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>New Comments!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+                   <!--  <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>New Tasks!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+             <!--        <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Orders!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+                 <!--    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Support Tickets!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>  </div>-->
+               
+                <!-- /.row -->
+
+            <!--     <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-area-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- /.row -->
+
+       <!--one repeat--> 
+       <div  >        
+   <pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
+</div>     
+  <div flex-xs flex-gt-xs="32" style="float:left;" ng-repeat="item in filtered = productList | filter: search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit as Result "  >
+    <!-- check added-->
+    <span ng-if="!checkWhetherAddedToTheCart(item);"> 
+      <md-card flex="100" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" >{{item.name}}</span>
+            <span class="md-subhead" style="color:#337ab7;" > Category {{item.category}}</span>
+            <span class="md-subhead" style="color:#337ab7;" >Large {{item.description}}</span>
+            <span class="md-subhead" style="color:#337ab7;" >1 Unit = Rs.{{item.unitSellingPrice}}.00</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><img src="https://www.healthguard.lk/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/0/0/005617_clogard_toothpaste_original_120g.jpg"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+        <form >
+          <md-button >
+         <input type="number" min="1" max="250"  ng-model="valueitem.selected[$index]"   ng-init="valueitem.selected[$index]=1" step="1"/>    
+    <input type="text" size="30px;" value="{{valueitem.selected[$index]}} Unit = Rs.{{item.unitSellingPrice*valueitem.selected[$index]}}.00" disabled /></md-button><br/><br/>
+  <!--   <input type="range" min="0" max="50" value="{{value}}" ng-model="value" /> -->   
+        <span ng-if="userLogedIn == true"> <center> <md-button class="md-raised md-primary" ng-click="addToCart(item,valueitem.selected[$index])">Add To Cart</md-button></center></span>
+        <span ng-if="userLogedIn == false"> <center><a href="#!/login"> <md-button class="md-raised md-primary" >Add To Cart</md-button></a></center></span>
+          </form>
+        </md-card-actions>
+      </md-card>
+</span>
+<!-- already added-->
+ <span ng-if="checkWhetherAddedToTheCart(item);"> 
+      <md-card  flex="100" md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch ng-init="x=getAddedItem(item);" >
+    <!--   <md-card-header style="background-color:#54a054;color:white;height: 40px;" >
+          <md-card-avatar style="color:white;">
+            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">Already Added To the Cart</span>
+            
+          </md-card-header-text>
+        </md-card-header> -->
+
+        <md-card-title>
+          <md-card-title-text>
+            <!-- <span class="md-subhead" ><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> Already Added To the Cart</span> -->
+            <span class="md-headline" >{{x.productName}}</span>
+            <span class="md-subhead" style="color:#337ab7;" > Category {{x.productCatergory}}</span>
+            <span class="md-subhead" style="color:#337ab7;" >Large {{x.productDescription}}</span>
+            <span class="md-subhead" style="color:#337ab7;" >1 Unit = Rs.{{x.unitCostPrice}}.00</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><img src="https://www.healthguard.lk/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/0/0/005617_clogard_toothpaste_original_120g.jpg"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+        <form >
+          <md-button >
+         <input type="number" min="1" max="250"  ng-model="valueitem.selected[$index]"   ng-init="valueitem.selected[$index]=x.productQuantity" step="1"/>    
+    <input type="text" size="30px;" value="{{valueitem.selected[$index]}} Unit = Rs.{{x.unitCostPrice*valueitem.selected[$index]}}.00" disabled /></md-button><br/><br/>
+  <!--   <input type="range" min="0" max="50" value="{{value}}" ng-model="value" /> -->   
+         <center> <md-button class="md-raised md-primary" ng-click="editCart(x,valueitem.selected[$index])">Edit Cart</md-button>
+         <md-button class="md-raised md-primary" ng-click="removefromCart(x,valueitem.selected[$index])">Remove From Cart</md-button></center>
+          </form>
+        </md-card-actions>
+      </md-card>
+</span>
+      </div>
+   <div ng-if= "Result.length == 0" >
+     <div class="row" >
+                    <div class="col-lg-12"   >
+                        <div class="alert alert-info alert-dismissable" style="background-color:#F44336;opacity:0.8;color:white;">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> Sorry, your search  <strong>'{{search}}'</strong> did not match any products. 
+                        </div>
+                    </div>
+                </div>
+   </div>
+      <!--one repeat-->
+     
+</div>
+
+<div  > 
+
+   <pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
+</div>
+
+
+    
+
+       
+
+             <!--    <div class="row">
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                                <div class="text-right">
+                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">just now</span>
+                                        <i class="fa fa-fw fa-calendar"></i> Calendar updated
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">4 minutes ago</span>
+                                        <i class="fa fa-fw fa-comment"></i> Commented on a post
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">23 minutes ago</span>
+                                        <i class="fa fa-fw fa-truck"></i> Order 392 shipped
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">46 minutes ago</span>
+                                        <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">1 hour ago</span>
+                                        <i class="fa fa-fw fa-user"></i> A new user has been added
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">2 hours ago</span>
+                                        <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">yesterday</span>
+                                        <i class="fa fa-fw fa-globe"></i> Saved the world
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">two days ago</span>
+                                        <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Order #</th>
+                                                <th>Order Date</th>
+                                                <th>Order Time</th>
+                                                <th>Amount (USD)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>3326</td>
+                                                <td>10/21/2013</td>
+                                                <td>3:29 PM</td>
+                                                <td>$321.33</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3325</td>
+                                                <td>10/21/2013</td>
+                                                <td>3:20 PM</td>
+                                                <td>$234.34</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3324</td>
+                                                <td>10/21/2013</td>
+                                                <td>3:03 PM</td>
+                                                <td>$724.17</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3323</td>
+                                                <td>10/21/2013</td>
+                                                <td>3:00 PM</td>
+                                                <td>$23.71</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3322</td>
+                                                <td>10/21/2013</td>
+                                                <td>2:49 PM</td>
+                                                <td>$8345.23</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3321</td>
+                                                <td>10/21/2013</td>
+                                                <td>2:23 PM</td>
+                                                <td>$245.12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3320</td>
+                                                <td>10/21/2013</td>
+                                                <td>2:15 PM</td>
+                                                <td>$5663.54</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3319</td>
+                                                <td>10/21/2013</td>
+                                                <td>2:13 PM</td>
+                                                <td>$943.45</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+   
+    <!-- /#wrapper -->
+
+  </div>
+
